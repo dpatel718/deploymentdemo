@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+<style>
+.container {
+    margin: auto;
+    width: 1200px;
+    height: 800px;
+    background-color: darkslategrey;
+    margin-top: 100px;
+    color: white;
+    border-radius: 10px;
+}
+.header {
+    display: flex;
+    padding: 25px;
+    justify-content: space-between;
+}
+#home {
+    padding-right: 10px;
+}
+h3 {
+    padding-left: 25px;
+}
+ul {
+    list-style-type: none;
+    padding-left: 25px;
+    margin-top: 50px;
+}
+li {
+    padding-bottom: 10px;
+}
+.info {
+    width: 1000px;
+    margin-left: 50px;
+    height: 300px;
+    overflow: auto;
+    display: flex;
+}
+.main {
+    height: 300px;
+    overflow: auto;
+}
+.header a {
+    color: aqua;
+}
+h1 {
+    color: goldenrod;
+}
+h3 {
+    color: rgb(245, 50, 24);
+}
+.paras {
+    width: 150px;
+    color: hotpink;
+}
+.inputs {
+    width: 1000px;
+}
+.paras p {
+    height: 35px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.inputs p {
+    height: 35px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.inputs p:nth-child(2) {
+    overflow: scroll;
+}
+</style>
+    
+    <title>Destination</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>{{selectedItem.destination}}</h1>
+            <div class="links">
+                <a id="home" href="/travels">Home</a>
+                <a href="/logout">Log Out</a>
+            </div>
+        </div>
+        <div class="info">
+            <div class="paras">
+                <p>Planned by: </p> 
+                <p>Description: </p> 
+                <p>Travel Date From: </p> 
+                <p>Travel Date To: </p> 
+            </div>
+            <div class="inputs">
+                <p> {{selectedItem.uploader.name}} </p>
+                <p> {{selectedItem.plan}} </p>
+                <p> {{selectedItem.travel_start}} </p>
+                <p> {{selectedItem.travel_end}} </p>
+            </div>
+        </div>    
+        <br>
+        <div class="main">
+            <h3>Other users' joining the trip:</h3>
+            <ul>
+                {% for user in favUser %}
+                <li>{{user.name}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

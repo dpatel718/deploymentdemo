@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+<style>
+.container {
+    margin: auto;
+    width: 1200px;
+    height: 800px;
+    background-color: darkslategrey;
+    margin-top: 100px;
+    color: white;
+    border-radius: 10px;
+}
+.header {
+    display: flex;
+    padding: 25px;
+    justify-content: space-between;
+}
+#home {
+    padding-right: 10px;
+}
+.form {
+    padding-left: 25px;
+}
+.main {
+    display: flex;
+}
+#p1 {
+    padding-left: 200px;
+}
+.paras {
+    width: 150px;
+}
+.paras p {
+    margin-top: 20px;
+}
+.inputs {
+    width: 200px;
+}
+#add {
+    margin-left: 115px;
+}
+.header a {
+    color: aqua;
+}
+h1 {
+    color: goldenrod;
+}
+</style>
+
+    <title>Add Plan</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Add a Trip</h1>
+            <div class="links">
+                <a id="home" href="/travels">Home</a>
+                <a href="/logout">Log Out</a>
+            </div>
+        </div>
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color: rgb(184, 127, 238); padding-left: 25px;">{{message}}
+            {% endfor %}
+        {% endif %}
+        <div class="form">
+            <form action="/add" method="POST">
+                {% csrf_token %}
+            <div class="main">
+            <div class="paras">
+                <p>Destination: </p> 
+                <p>Description: </p> 
+                <p>Travel Date From: </p> 
+                <p>Travel Date To: </p> 
+            </div>
+            <div class="inputs">
+                <p> <input type="text" name="destin"> </p>
+                <p> <input type="text" name="descrip"> </p>
+                <p> <input type="date" name="from"> </p>
+                <p> <input type="date" name="to"> </p>
+                <p id="add"> <input type="submit" value="Add"> </p>
+            </div>
+            </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

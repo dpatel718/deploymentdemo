@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+<style>
+.container {
+    margin: auto;
+    width: 1200px;
+    height: 800px;
+    background-color: darkslategrey;
+    margin-top: 100px;
+    color: white;
+    border-radius: 10px;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 25px;
+}
+.list {
+    width: 1150px;
+    height: 250px;
+    overflow: auto;
+    margin-left: 25px;
+}
+.list2 {
+    width: auto;
+    height: 250px;
+    overflow: auto;
+    margin-left: 25px;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+}
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+th:nth-child(1) {
+    width: 150px;
+}
+th:nth-child(2) {
+    width: 150px;
+}
+th:nth-child(3) {
+    width: 150px;
+}
+tr:nth-child(even) {
+    background-color: black;
+}
+#addItem {
+    float: right;
+    padding-right: 25px;
+    color: pink;
+}
+h3 {
+    margin-left: 25px;
+    color: rgb(245, 50, 24);
+}
+.header a {
+    color: aqua;
+}
+a {
+    color: greenyellow;
+}
+h1 {
+    color: goldenrod;
+}
+</style>
+    
+    <title>Travel Dashboard</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Hello, {{loggedInUser.name}}!</h1>
+            <p><a href="/logout">Log Out</a></p>
+        </div>
+
+        <h3>Your Trip Schedules</h3>
+        <div class="list">
+            <table>
+            <tr>
+                <th>Destination</th>
+                <th>Travel Start Date</th>
+                <th>Travel End Date</th>
+                <th>Plan</th>
+            </tr>
+            {% for fav in favitems %}
+            <tr>
+                <td><a href="/travels/destination/{{fav.id}}">{{fav.destination}}</a></td>
+                <td>{{fav.travel_start}}</td>
+                <td>{{fav.travel_end}}</td>
+                <td>{{fav.plan}}</td>
+            </tr>
+            {% endfor %}
+            </table>
+        </div>
+
+        <br>
+        
+        <h3>Other Users' Travel Plans</h3>
+        <div class="list2">
+            <table>
+            <tr>
+                <th>Name</th>
+                <th>Destination</th>
+                <th>Travel Start Date</th>
+                <th>Travel End Date</th>
+                <th>Do You Want to Join?</th>
+            </tr>
+            {% for fav in nonfavitems %}
+            <tr>
+                <td>{{fav.uploader.name}}</td>
+                <td><a href="/travels/destination/{{fav.id}}">{{fav.destination}}</a></td>
+                <td>{{fav.travel_start}}</td>
+                <td>{{fav.travel_end}}</td>
+                <td><a href="/favoriteItem/{{fav.id}}">Join</a></td>
+            </tr>
+            {% endfor %}
+            </table>
+        </div>
+        <a id="addItem" href="/travels/add">Add Travel Plan</a>
+        <br>
+    </div>
+</body>
+</html>

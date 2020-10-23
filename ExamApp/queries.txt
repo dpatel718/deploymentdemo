@@ -1,0 +1,2 @@
+Travel.objects.create(destination = "Bali", travel_start = "2021-03-15", travel_end = "2021-04-01", uploader = User.objects.get(id=1), plan = "Have some fun in the sun and go sightseeing! Eat lots of food and have some drinks..")
+Travel.objects.create(destination = "Jamaica", travel_start = "2021-08-21", travel_end = "2021-09-10", uploader = User.objects.get(id=2), plan = "Take in the views and explore with the locals. Drink, dance, get on a boat and maybe even snorkel!")
